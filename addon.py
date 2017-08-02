@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#Copyright (C) 2013 Fiona Schmidtke, Niclas Hoyer
+#Copyright (C) 2013 Fiona Schmidtke, Niclas Hoyer (C) 2016 MSH
 #
 #This program is free software: you can redistribute it and/or modify
 #it under the terms of the GNU General Public License as published by
@@ -25,13 +25,12 @@ plugin = Plugin()
 
 tagesschauURL = 'http://www.tagesschau.de/'
 
-h264regexp  = re.compile('http:\/\/[^"]+webl\.h264\.mp4')
-videoregexp = re.compile(re.escape(tagesschauURL)+'ausland\/videoblog\/[^"]+')
+h264regexp  = re.compile('http:\/\/[^"]+webxl\.h264\.mp4')
 
 blogsregexp      = re.compile('Startseite Videoblog(.*)subressort', re.MULTILINE|re.DOTALL)
 blogurlregexp    = re.compile('a href="(\/videoblog\/[^"]+)"')
 blogtitleregexp  = re.compile('">([^<]+)<\/a><\/li>')
-entriesregexp    = re.compile('a\thref="(\/videoblog\/[^"]+)">\n[^\n]*\n<h4 class="headline">([^<]*)<\/h4>', re.MULTILINE|re.DOTALL)
+entriesregexp    = re.compile('a\thref="(\/videoblog\/[^"]+)">\n[^\n]*\n[^\n]*\n<h4 class="headline">([^<]*)<\/h4>', re.MULTILINE|re.DOTALL)
 teaserregexp     = re.compile('img[^>]+src="(\/multimedia\/bilder\/[^"]+teaser+[^"]+)')
 
 def removeNonAscii(s):
@@ -44,10 +43,6 @@ def parseTitle(title):
 		title = title[10:]
 	title = title.replace('&#034;','"');
 	return title
-
-def getVideoPageUrl(desc):
-	match = videoregexp.search(desc)
-	return match.group(0)
 
 def getH264Video(url):
 	req = urllib2.Request(url)
@@ -102,11 +97,11 @@ def getEntries(url):
 @plugin.route('/')
 def index():
 	item = {
-		'label': localize(30002),
+		'label': localize(32002),
 		'path': plugin.url_for('show_newest')
 	}
 	item2 = {
-		'label': localize(30001),
+		'label': localize(32001),
 		'path': plugin.url_for('show_all')
 	}
 	return [item, item2]
@@ -114,12 +109,12 @@ def index():
 @plugin.route('/newest/')
 def show_newest():
 	try:
-		feed = feedparser.parse('http://meta.tagesschau.de/tag/videoblog/feed')
+		feed = feedparser.parse('http://www.tagesschau.de/thema/videoblog/feed/')
 		items = []
 		for entry in feed.entries:
 			item = {
 				'label': parseTitle(entry.title),
-				'path': getH264Video(getVideoPageUrl(entry.description)),
+				'path': getH264Video(entry.link),
 				'is_playable': True
 			}
 			if item['path'] == None:
