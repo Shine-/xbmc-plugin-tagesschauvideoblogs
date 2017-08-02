@@ -18,3 +18,9 @@ version 0.1.1:
  * fixed parsing of ALL section
  * more items in NEWEST section
  * streaming 720p versions now
+
+
+ version 0.1.3.2:
+ * once again, more items in NEWEST section
+ * kept old NEWEST section as separate item
+ * updated localization

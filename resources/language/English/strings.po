@@ -7,10 +7,14 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "Preferred-Encodings: utf-8 latin1\n"
 
-msgctxt "#32001"
-msgid "All"
+msgctxt "#30001"
+msgid "All video blogs"
 msgstr ""
 
-msgctxt "#32002"
-msgid "Newest"
+msgctxt "#30002"
+msgid "Latest from RSS feed"
+msgstr ""
+
+msgctxt "#30003"
+msgid "Latest from main page"
 msgstr ""

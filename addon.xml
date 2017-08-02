@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
-Copyright (C) 2013 Fiona Schmidtke, Niclas Hoyer, (C) 2016 MSH
+Copyright (C) 2013 Fiona Schmidtke, Niclas Hoyer, (C) 2016-2017 MSH
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 -->
-<addon id="plugin.video.tagesschauvideoblog" name="Tagesschau Videoblog" version="0.1.3.1" provider-name="Fiona Schmidtke, Niclas Hoyer, MSH">
+<addon id="plugin.video.tagesschauvideoblog" name="Tagesschau Videoblog" version="0.1.3.2" provider-name="Fiona Schmidtke, Niclas Hoyer, MSH">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.xbmcswift2" version="2.4.0"/>
@@ -28,8 +28,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
     <platform>all</platform>
     <language>de</language>
     <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-    <website>https://github.com/fisch42/xbmc-plugin-tagesschauvideoblogs</website>
-    <source>https://github.com/fisch42/xbmc-plugin-tagesschauvideoblogs</source>
+    <website>https://github.com/Shine-/xbmc-plugin-tagesschauvideoblogs</website>
+    <source>https://github.com/Shine-/xbmc-plugin-tagesschauvideoblogs</source>
+    <forum></forum>
+    <email></email>
     <summary lang="de">tagesschau.de Videoblog</summary>
     <summary lang="en">videoblogs from tagesschau.de</summary>
     <description lang="de">Die Videoblogs der ARD-Korrespondenten auf tagesschau.de</description>

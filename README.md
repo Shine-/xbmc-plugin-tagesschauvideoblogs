@@ -1,7 +1,7 @@
 xbmc-plugin-tagesschauvideoblogs
 ===============================
 
-[XBMC](http://xbmc.org/) plugin for watching videoblogs from [tagesschau.de](http://www.tagesschau.de/).
+[Kodi](https://kodi.tv/) plugin for watching videoblogs from [tagesschau.de](http://www.tagesschau.de/).
 
 License
 =======

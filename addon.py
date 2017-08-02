@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#Copyright (C) 2013 Fiona Schmidtke, Niclas Hoyer (C) 2016 MSH
+#Copyright (C) 2013 Fiona Schmidtke, Niclas Hoyer (C) 2016-2017 MSH
 #
 #This program is free software: you can redistribute it and/or modify
 #it under the terms of the GNU General Public License as published by
@@ -97,16 +97,20 @@ def getEntries(url):
 @plugin.route('/')
 def index():
 	item = {
-		'label': localize(32002),
+		'label': localize(30002),
 		'path': plugin.url_for('show_newest')
 	}
 	item2 = {
-		'label': localize(32001),
+		'label': localize(30001),
 		'path': plugin.url_for('show_all')
 	}
-	return [item, item2]
+	item3 = {
+		'label': localize(30003),
+		'path': plugin.url_for('show_main')
+	}
+	return [item3, item2, item]
 
-@plugin.route('/newest/')
+@plugin.route('/rss/')
 def show_newest():
 	try:
 		feed = feedparser.parse('http://www.tagesschau.de/thema/videoblog/feed/')
@@ -146,6 +150,26 @@ def show_blog(blog):
 	try:
 		items = []
 		url = urllib.unquote(blog)
+		entries = getEntries(url)
+		for entry in entries:
+			item = {
+				'label': entry['title'],
+				'path': getH264Video(entry['url']),
+				'icon': entry['teaser'],
+				'is_playable': True
+			}
+			if item['path'] == None:
+				continue
+			items.append(item)
+		return items
+	except:
+		return []
+
+@plugin.route('/newest/')
+def show_main():
+	try:
+		items = []
+		url = urllib.unquote(tagesschauURL+'videoblog/index.html')
 		entries = getEntries(url)
 		for entry in entries:
 			item = {
